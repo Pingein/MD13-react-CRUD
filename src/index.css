@@ -1,0 +1,36 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+
+  --page-color: #242424;
+  --text-color: #e4e4e4;
+  --container-color: #191919;
+  --table-line-color: #343434;
+
+
+  color-scheme: light dark;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: var(--page-color);
+  color: var(--text-color)
+}
+
+.container {
+  background-color: var(--container-color);
+}
+
+
+
+.table__cell {
+  outline: 1px solid #b2b2b2
+}

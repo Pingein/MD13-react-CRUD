@@ -1,0 +1,68 @@
+{
+    "GPUs": [
+      {
+        "id": 1,
+        "manufacturer": "NVIDIA",
+        "vendor": "gigabyte",
+        "model": "GTX 1060",
+        "vram": 6,
+        "price": 220
+      },
+      {
+        "id": 2,
+        "manufacturer": "NVIDIA",
+        "vendor": "zotac",
+        "model": "RTX 3060",
+        "vram": 8,
+        "price": 370
+      },
+      {
+        "id": 3,
+        "manufacturer": "NVIDIA",
+        "vendor": "asus",
+        "model": "RTX 3070ti",
+        "vram": 8,
+        "price": 780
+      },
+      {
+        "id": 4,
+        "manufacturer": "AMD",
+        "vendor": "ascrock",
+        "model": "RX 6500XT",
+        "vram": 4,
+        "price": 200
+      },
+      {
+        "id": 5,
+        "manufacturer": "INTEL",
+        "vendor": "intel",
+        "model": "arc A770",
+        "vram": 16,
+        "price": 420
+      },
+      {
+        "manufacturer": "AMD",
+        "vendor": "msi",
+        "model": "7900 XT",
+        "vram": 16,
+        "price": 700,
+        "id": 6
+      },
+      {
+        "manufacturer": "NVIDIA",
+        "vendor": "nvidia",
+        "model": "A100",
+        "vram": 80,
+        "price": 16000,
+        "id": 7
+      },
+      {
+        "manufacturer": "NVIDIA",
+        "vendor": "msi",
+        "model": "GTX 970",
+        "vram": 4,
+        "price": 180,
+        "id": 8
+      }
+    ]
+  }
