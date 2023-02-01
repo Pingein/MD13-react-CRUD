@@ -11,10 +11,7 @@ async function addGPUtoDB(url:string, gpu: GPU) {
 }
 
 
-const getData = async (url:string, params?:AxiosParameters):Promise<GPU[]>  => {
-    let data = await axios.get(url, {params:params}).then(res => res.data)
-    return data
-}
+
 
 
 
@@ -25,4 +22,4 @@ const removeAllChildElements = (parent_element:HTMLElement) => {
 }
 
 
-export { addGPUtoDB, removeAllChildElements, getData }
+export { addGPUtoDB, removeAllChildElements }

@@ -27,9 +27,19 @@ body {
 
 .container {
   background-color: var(--container-color);
+  min-width: 460px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
 
+.table {
+  width: 100%;
+}
 
 .table__cell {
   outline: 1px solid #b2b2b2
