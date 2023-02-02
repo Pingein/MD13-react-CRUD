@@ -98,3 +98,11 @@ body {
 .bold {
   font-weight: 500;
 }
+
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  border-radius: 10px;
+}

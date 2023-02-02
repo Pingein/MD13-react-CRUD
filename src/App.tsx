@@ -32,6 +32,8 @@ function App() {
   const [table, setTable] = useState<GPU[]>([])
   const [params, setParams] = useState<AxiosParameters>({_page:page, _limit:limit})
 
+  const [loading, setLoading] = useState(true)
+
 
   const updateTable = () => {
     axios.get(URL, {params}).then(res => {
@@ -41,47 +43,63 @@ function App() {
 
   useEffect(() => {
     updateTable()
+    setLoading(false)
   }, [])
+
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
 
   return (
 
     <div className="App">
-      <div className="container input">
-        <form className='form'>
-          <input className='form__manufacturer' type="text" placeholder='manufacturer'/>
-          <input className='form__vendor' type="text" placeholder='vendor'/>
-          <input className='form__model' type="text" placeholder='model'/>
-          <input className='form__vram' type="number" placeholder='vram'/>
-          <input className='form__price' type="number" placeholder='price'/>
-          <button className='form__submit' type="submit" onClick={(e) => {
-            e.preventDefault()
-            if (!(e.currentTarget.parentElement && e.currentTarget.parentElement.childNodes)) {
-              return
-            }
-
-            let form:NodeListOf<ChildNode> = e.currentTarget.parentElement.childNodes
-
-            let manufacturer = (form[0] as HTMLInputElement).value.toLocaleUpperCase()
-            let vendor = (form[1] as HTMLInputElement).value.toLocaleLowerCase()
-            let model = (form[2] as HTMLInputElement).value.toLocaleUpperCase()
-            let vram = +(form[3] as HTMLInputElement).value
-            let price = +(form[4] as HTMLInputElement).value
-
-            if (manufacturer.match(RegExp(/(NVIDIA|AMD|ATI|INTEL)/)) && vendor && model && vram && price) {
-              let new_gpu:GPU =  {
-                manufacturer, vendor,
-                model, vram, price
+      <div className="container menu">
+        <div className="container input">
+          <form className='form'>
+            <input className='form__manufacturer' type="text" placeholder='manufacturer'/>
+            <input className='form__vendor' type="text" placeholder='vendor'/>
+            <input className='form__model' type="text" placeholder='model'/>
+            <input className='form__vram' type="number" placeholder='vram'/>
+            <input className='form__price' type="number" placeholder='price'/>
+            <button className='form__submit' type="submit" onClick={(e) => {
+              e.preventDefault()
+              if (!(e.currentTarget.parentElement && e.currentTarget.parentElement.childNodes)) {
+                return
               }
-              axios.post(URL, new_gpu).then(_ => updateTable())
-              form.forEach((el) => {
-                (el as HTMLInputElement).value = ''
-              })
-            } else {
-              alert('plase check input data')
-            }
-          }}>ADD</button>
-        </form>
+
+              let form:NodeListOf<ChildNode> = e.currentTarget.parentElement.childNodes
+
+              let manufacturer = (form[0] as HTMLInputElement).value.toLocaleUpperCase()
+              let vendor = (form[1] as HTMLInputElement).value.toLocaleLowerCase()
+              let model = (form[2] as HTMLInputElement).value.toLocaleUpperCase()
+              let vram = +(form[3] as HTMLInputElement).value
+              let price = +(form[4] as HTMLInputElement).value
+
+              if (manufacturer.match(RegExp(/(NVIDIA|AMD|ATI|INTEL)/)) && vendor && model && vram && price) {
+                let new_gpu:GPU =  {
+                  manufacturer, vendor,
+                  model, vram, price
+                }
+                axios.post(URL, new_gpu).then(_ => updateTable())
+                form.forEach((el) => {
+                  (el as HTMLInputElement).value = ''
+                })
+              } else {
+                alert('plase check input data')
+              }
+            }}>ADD</button>
+          </form>
+        </div>
+
+        <div className="container pagination">
+
+        </div>
+
+        <div className="container filter">
+
+        </div>
       </div>
+
 
       <div className='container main'>
 

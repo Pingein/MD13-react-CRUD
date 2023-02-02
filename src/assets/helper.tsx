@@ -20,4 +20,9 @@ const removeAllChildElements = (parent_element:HTMLElement) => {
 }
 
 
+const createCard = () => {
+
+}
+
+
 export { addGPUtoDB, removeAllChildElements, generateID }
