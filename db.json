@@ -36,7 +36,7 @@
       "id": 5,
       "manufacturer": "INTEL",
       "vendor": "intel",
-      "model": "arc A770",
+      "model": "ARC A770",
       "vram": 16,
       "price": 420
     },
@@ -75,10 +75,50 @@
     {
       "manufacturer": "INTEL",
       "vendor": "intel",
-      "model": "A750",
+      "model": "ARC A750",
       "vram": 8,
       "price": 150,
       "id": 10
+    },
+    {
+      "manufacturer": "NVIDIA",
+      "vendor": "palit",
+      "model": "GTX 1650",
+      "vram": 4,
+      "price": 189,
+      "id": 11
+    },
+    {
+      "manufacturer": "NVIDIA",
+      "vendor": "asus",
+      "model": "GTX 1660S",
+      "vram": 6,
+      "price": 269,
+      "id": 12
+    },
+    {
+      "manufacturer": "NVIDIA",
+      "vendor": "gainward",
+      "model": "RTX 3060",
+      "vram": 8,
+      "price": 349,
+      "id": 13
+    },
+    {
+      "manufacturer": "INTEL",
+      "vendor": "asrock",
+      "model": "ARC A380",
+      "vram": 6,
+      "price": 178,
+      "id": 14
+    },
+    {
+      "manufacturer": "NVIDIA",
+      "vendor": "asus",
+      "model": "GTX 750TI",
+      "vram": 2,
+      "price": 50,
+      "id": 15
     }
   ]
 }

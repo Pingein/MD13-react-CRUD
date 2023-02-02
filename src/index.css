@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap');
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
 
   --page-color: #242424;
   --text-color: #e4e4e4;
@@ -9,6 +11,7 @@
 
   color-scheme: light dark;
 
+  font-weight: 300;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,7 +30,6 @@ body {
 
 .container {
   background-color: var(--container-color);
-  min-width: 460px;
 }
 
 .form {
@@ -43,4 +45,56 @@ body {
 
 .table__cell {
   outline: 1px solid #b2b2b2
+}
+
+.input {
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 200px;
+}
+
+.main {
+  background-color: var(--page-color);
+  min-width: 460px;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 5px;
+  background-color: #111111;
+}
+
+.options {
+  display: flex;
+  background-color: #111111;
+  justify-content: space-evenly;
+}
+
+.btn {
+  cursor: pointer;
+  outline-color: transparent;
+  border: #343434;
+  padding: 0.2em 1em;
+  border-radius: 0.2em;
+}
+
+.edit {
+  background-color: teal;
+}
+
+.delete {
+  background-color: rgb(124, 31, 31);
+}
+
+.bold {
+  font-weight: 500;
 }

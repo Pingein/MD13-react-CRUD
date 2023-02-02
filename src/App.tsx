@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { GPU, AxiosParameters } from './assets/interfaces'
+import { generateID } from './assets/helper'
 //import { getData } from './assets/helper'
 import axios from 'axios'
 
@@ -31,8 +32,9 @@ function App() {
   const [table, setTable] = useState<GPU[]>([])
   const [params, setParams] = useState<AxiosParameters>({_page:page, _limit:limit})
 
+
   const updateTable = () => {
-    axios.get(URL).then(res => {
+    axios.get(URL, {params}).then(res => {
       setTable(res.data)
     })
   }
@@ -41,14 +43,10 @@ function App() {
     updateTable()
   }, [])
 
-  if (!table) {
-    return
-  }
-
   return (
 
     <div className="App">
-      <div className="container">
+      <div className="container input">
         <form className='form'>
           <input className='form__manufacturer' type="text" placeholder='manufacturer'/>
           <input className='form__vendor' type="text" placeholder='vendor'/>
@@ -69,24 +67,48 @@ function App() {
             let vram = +(form[3] as HTMLInputElement).value
             let price = +(form[4] as HTMLInputElement).value
 
-            if (manufacturer && vendor && model && vram && price) {
+            if (manufacturer.match(RegExp(/(NVIDIA|AMD|ATI|INTEL)/)) && vendor && model && vram && price) {
               let new_gpu:GPU =  {
-                manufacturer,
-                vendor,
-                model,
-                vram,
-                price
+                manufacturer, vendor,
+                model, vram, price
               }
-              console.log(new_gpu)
               axios.post(URL, new_gpu).then(_ => updateTable())
+              form.forEach((el) => {
+                (el as HTMLInputElement).value = ''
+              })
+            } else {
+              alert('plase check input data')
             }
           }}>ADD</button>
         </form>
       </div>
 
-      <div className='container'>
+      <div className='container main'>
+
+        {table.map(card => {return (
+          <div className="card" key={generateID()}>
+            <span><span className='bold'>{card.manufacturer}</span> {`${card.vendor} ${card.model}`}</span>
+            <span><span className='bold'>vram:</span> {card.vram}GB</span>
+            <span><span className='bold'>price:</span> {card.price}€</span>
+            <div className="options container">
+              <button className='edit btn' onClick={(e) => {
+                e.preventDefault()
+                let newPrice = prompt('enter new price')
+                if (newPrice) {
+                  axios.patch(URL+`${card.id}`, {price: +newPrice}).then(_ => {updateTable()})
+                }
+              }}>EDIT</button>
+              <button className='delete btn' onClick={(e) => {
+                e.preventDefault()
+                if (confirm(`This will delete ${card.manufacturer} ${card.vendor} ${card.model} ${card.vram}GB`)) {
+                  axios.delete(URL+`${card.id}`).then(_ => {updateTable()})
+                }
+              }}>DELETE</button>
+            </div>
+          </div>
+        )})}
         
-        <table className='table'>
+        {/* <table className='table'>
           <thead className='table__head'>
             <tr className='table__row table__row--header'>
               <th className='table__cell table__cell--header'>
@@ -125,7 +147,7 @@ function App() {
             })}
           </tbody>
 
-        </table>
+        </table> */}
       </div>
     </div>
 

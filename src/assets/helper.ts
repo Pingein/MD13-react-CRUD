@@ -10,11 +10,9 @@ async function addGPUtoDB(url:string, gpu: GPU) {
                      price: gpu.price})
 }
 
-
-
-
-
-
+const generateID = () => {
+    return (Math.random()*1000000000000).toString(16)
+}
 
 const removeAllChildElements = (parent_element:HTMLElement) => {
     let children = [...parent_element.childNodes]
@@ -22,4 +20,4 @@ const removeAllChildElements = (parent_element:HTMLElement) => {
 }
 
 
-export { addGPUtoDB, removeAllChildElements }
+export { addGPUtoDB, removeAllChildElements, generateID }
